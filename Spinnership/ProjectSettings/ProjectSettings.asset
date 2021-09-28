@@ -590,8 +590,9 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
     1: OBI_ONI_SUPPORTED
-    4: OBI_ONI_SUPPORTED
-    7: OBI_ONI_SUPPORTED
+    4: OBI_ONI_SUPPORTED;CF_FORCE_MOBILE_MODE
+    7: OBI_ONI_SUPPORTED;CF_FORCE_MOBILE_MODE
+    14: CF_FORCE_MOBILE_MODE
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
