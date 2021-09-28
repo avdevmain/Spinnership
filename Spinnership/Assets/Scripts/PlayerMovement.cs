@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -18,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     public float upForce;
 
 
-
     private void Start() {
         floatPos = transform.position; //Enable floating
     }
@@ -27,14 +27,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
            floatPos = transform.position;//Enable floating
+
         }
+
     }
 
 
 
     private void FixedUpdate() {
-        
-        /*
         if (Input.GetKey(KeyCode.Mouse0))
         {
             FollowTheMouse();
@@ -44,20 +44,21 @@ public class PlayerMovement : MonoBehaviour
             Float();
         }
 
-        */
-        
-   
-
-        if (rb.velocity.magnitude > maxSpeed) //Max speed limit
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+                if (rb.velocity.magnitude > maxSpeed)
+                rb.velocity = rb.velocity.normalized * maxSpeed;
     }
-
-
 
     private void FollowTheMouse()
     {
+        //No inertia movement
+        /*
         var pos = Input.mousePosition;
-        pos.z = transform.position.z;
+        pos.z = transform.position.z - Camera.main.transform.position.z;
+        pos = Camera.main.ScreenToWorldPoint(pos);
+        transform.position = Vector3.MoveTowards(transform.position, pos, moveSpeed * Time.deltaTime); */   
+
+        var pos = Input.mousePosition;
+        pos.z = transform.position.z - Camera.main.transform.position.z;
         pos = Camera.main.ScreenToWorldPoint(pos);
 
         if (Vector3.Distance(pos, transform.position) > pogreshnost)
