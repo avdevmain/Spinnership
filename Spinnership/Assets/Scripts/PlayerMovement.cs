@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    private Player player;
     [SerializeField] private Camera cam;
-    [SerializeField] private Rigidbody rb;
 
-    public float maxSpeed = 10f;
 
-    Vector3 floatPos;
+
     
     public float upForce;
 
-
     private void Start() {
-        floatPos = transform.position; //Enable floating
+
+        if (!player)
+            player = GetComponent<Player>();
+
+        player.idlePos = transform.position; //Enable floating
     }
     private void Update() {
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-           floatPos = transform.position;//Enable floating
+           player.idlePos = transform.position;//Enable floating
 
         }
 
@@ -36,8 +37,8 @@ public class PlayerMovement : MonoBehaviour
             Float();
         }
 
-        if (rb.velocity.magnitude > maxSpeed)
-            rb.velocity = rb.velocity.normalized * maxSpeed;
+      //  if (player.rb.velocity.magnitude > maxSpeed)
+       //     player.rb.velocity = player.rb.velocity.normalized * maxSpeed;
 
         
     }
@@ -47,9 +48,9 @@ public class PlayerMovement : MonoBehaviour
     private void Float()
     {
      
-        if (transform.position.y < floatPos.y)
+        if (transform.position.y < player.idlePos.y)
         {
-            rb.AddForce(Vector3.up * upForce);
+            player.rb.AddForce(Vector3.up * player.upForce);
             
         }
 

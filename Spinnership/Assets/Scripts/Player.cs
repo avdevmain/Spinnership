@@ -6,4 +6,9 @@ public class Player : Entity
 {
     private PlayerMovement movement;
 
+
+    private void Awake() {
+        if (!rb)
+            rb = GetComponent<Rigidbody>();
+    }
 }

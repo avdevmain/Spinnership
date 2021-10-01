@@ -7,12 +7,16 @@ public class Fly : Entity
 {
 
     public StateMachine stateMachine;
-    public IdleState idle;
+
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
         stateMachine = new StateMachine();
 
         idle = new IdleState(this, stateMachine);
+
+        attack = new AttackState(this, stateMachine);
 
         stateMachine.Initialize(idle);
     }
@@ -24,6 +28,12 @@ public class Fly : Entity
 
     private void FixedUpdate() {
         stateMachine.CurrentState.PhysicsUpdate();
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(idlePos, 0.5f);
     }
 }
 
