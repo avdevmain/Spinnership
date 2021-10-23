@@ -50,8 +50,11 @@ public class PlayerMovement : MonoBehaviour
      
         if (transform.position.y < player.idlePos.y)
         {
-            player.rb.AddForce(Vector3.up * player.upForce);
-            
+            player.rb.AddForce(Vector3.up * player.upForce);   
+        }
+        else
+        {
+            player.rb.AddForce(Vector3.up * player.upForce/2);  
         }
 
     }

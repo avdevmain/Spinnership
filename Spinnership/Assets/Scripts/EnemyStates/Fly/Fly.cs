@@ -5,16 +5,21 @@ using UnityEngine.AI;
 
 public class Fly : Entity
 {
-
+     
     public StateMachine stateMachine;
 
     private void Start()
     {
+
+        animator = GetComponent<Animator>();
+
         rb = GetComponent<Rigidbody>();
 
         stateMachine = new StateMachine();
 
         idle = new IdleState(this, stateMachine);
+
+        patrol = new PatrolState(this, stateMachine);
 
         attack = new AttackState(this, stateMachine);
 

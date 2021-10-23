@@ -8,6 +8,8 @@ public class Entity : MonoBehaviour
     [SerializeField] private int armorPercent;
     [SerializeField] private int health;
 
+    public AnimationCurve MoveCurve;   
+    public Animator animator;
 
     public float speed;
 
@@ -19,5 +21,7 @@ public class Entity : MonoBehaviour
 
     public IdleState idle;
     public AttackState attack;
+
+    public PatrolState patrol;
 
 }
