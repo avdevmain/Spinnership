@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PatrolState : State
 {
-public PatrolState(Entity entity, StateMachine stateMachine) : base(entity, stateMachine)
+public PatrolState(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
 {
 }
 
@@ -15,20 +15,18 @@ private float _animationTimePosition;
 
 public override void Enter()
 {
-    entity.animator.SetTrigger("setFly");
     Debug.Log("in patrolState!");
     GetPatrolPoint();
 }
 
 public override void Exit()
 {
-    entity.animator.ResetTrigger("setFly");
     Debug.Log("out patrolState!");
 }
 
 public override void LogicUpdate()
 {
-    Move();
+    MoveToPoint();
 
     CheckDist();
 }
@@ -40,32 +38,34 @@ public override void PhysicsUpdate()
 private void GetPatrolPoint()
 {
     
-    targetPos = entity.gameObject.GetComponent<EnemyPatrolRoute>().getNextPoint();
+    targetPos = enemy.gameObject.GetComponent<EnemyPatrolRoute>().getNextPoint();
 
     if (targetPos == Vector3.zero)
     {
         Debug.Log("Error: setting target position for patrol");
         return;
     }
-   // entity.idlePos = targetPos;
+   // enemy.idlePos = targetPos;
   
 }
 
-private void Move()
+private void MoveToPoint()
 {
     if (targetPos == Vector3.zero) return;
 
     _animationTimePosition += Time.deltaTime;
-   entity.transform.position = Vector3.Lerp(entity.transform.position, targetPos, entity.speed * entity.MoveCurve.Evaluate(_animationTimePosition));
+   enemy.transform.position = Vector3.Lerp(enemy.transform.position, targetPos, enemy.speed * enemy.MoveCurve.Evaluate(_animationTimePosition) * Time.deltaTime);
 
+    enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(targetPos - enemy.transform.position), Time.deltaTime * 10f);
+    enemy.transform.rotation = Quaternion.Euler(0, enemy.transform.rotation.eulerAngles.y, 0);
 }
 
 private void CheckDist()
 {
-    if (Vector3.Distance(entity.transform.position, targetPos) <= acceptableDist)
+    if (Vector3.Distance(enemy.transform.position, targetPos) <= acceptableDist)
     {   _animationTimePosition = 0;
         targetPos = Vector3.zero;
-        stateMachine.ChangeState(entity.idle);
+        stateMachine.ChangeState(enemy.idle);
 
     }
 }

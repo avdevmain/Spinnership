@@ -6,12 +6,12 @@ using UnityEngine;
 public abstract class State
 {
 
-    protected Entity entity;
+    protected Enemy enemy;
     protected StateMachine stateMachine;
 
-    protected State(Entity entity, StateMachine stateMachine)
+    protected State(Enemy enemy, StateMachine stateMachine)
     {
-        this.entity = entity;
+        this.enemy = enemy;
         this.stateMachine = stateMachine;
     }
 
@@ -34,4 +34,10 @@ public virtual void Exit()
 {
 
 }
+
+public virtual void GetStopEvent()
+{
+
+}
+
 }

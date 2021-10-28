@@ -1,18 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class Fly : Entity
+public class Fly : Enemy
 {
-     
-    public StateMachine stateMachine;
-
     private void Start()
     {
-
-        animator = GetComponent<Animator>();
-
         rb = GetComponent<Rigidbody>();
 
         stateMachine = new StateMachine();
@@ -21,7 +14,13 @@ public class Fly : Entity
 
         patrol = new PatrolState(this, stateMachine);
 
+        chase = new ChaseState(this, stateMachine);
+
         attack = new AttackState(this, stateMachine);
+
+        damaged = new DamagedState(this, stateMachine);
+
+        reload = new ReloadState(this, stateMachine);
 
         stateMachine.Initialize(idle);
     }
@@ -29,16 +28,22 @@ public class Fly : Entity
 
     private void Update() {
         stateMachine.CurrentState.LogicUpdate();
-    }
 
+        if ((DoYouLikeWhatYouSee())&&((stateMachine.CurrentState == idle)||(stateMachine.CurrentState == patrol)))
+        {
+            stateMachine.ChangeState(chase);
+        }
+    }
+    private bool DoYouLikeWhatYouSee() //Is player close enough
+    {
+        if (Vector3.Distance(transform.position, stateMachine.player.transform.position) < 8)
+        {
+            return true;
+        }
+        return false;
+    }
     private void FixedUpdate() {
         stateMachine.CurrentState.PhysicsUpdate();
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(idlePos, 0.5f);
-    }
 }
-

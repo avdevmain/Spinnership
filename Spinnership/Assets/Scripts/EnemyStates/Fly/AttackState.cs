@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class AttackState : State
 {
- public AttackState(Entity entity, StateMachine stateMachine) : base(entity, stateMachine)
+public AttackState(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
 {
 }
 
 public override void Enter()
 {
-    Debug.Log("in AttackState");
+    Debug.Log("in attackState!");
+
+    
 }
 
 public override void Exit()
 {
-    Debug.Log("out AttackState");
+    Debug.Log("out attackState!");
 }
 
 public override void LogicUpdate()
-{
-
-}
+{}
 
 public override void PhysicsUpdate()
+{}
+
+public override void GetStopEvent()
 {
-
+    stateMachine.player.GetDamage(enemy.attackPower,1, enemy.transform.position);
+    stateMachine.ChangeState(enemy.reload);
 }
-
 
 }

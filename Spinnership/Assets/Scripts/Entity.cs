@@ -5,11 +5,8 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
 
-    [SerializeField] private int armorPercent;
+    [SerializeField] private int armor;
     [SerializeField] private int health;
-
-    public AnimationCurve MoveCurve;   
-    public Animator animator;
 
     public float speed;
 
@@ -19,9 +16,17 @@ public class Entity : MonoBehaviour
 
     public Vector3 idlePos;
 
-    public IdleState idle;
-    public AttackState attack;
+    public int GetHealth()
+    {
+        return health;
+    }
+    public virtual void GetDamage(int dmgValue, float dmgMod, Vector3 point) //Point is position of weapon, that is dealing damage to current entity
+    {  
+        if (dmgValue == 0) return;
 
-    public PatrolState patrol;
+        health -= (dmgValue - armor);
+
+    }
+
 
 }
