@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    public Animator anim;
     public int attackPower;
     public StateMachine stateMachine;
 
@@ -35,7 +36,7 @@ public class Enemy : Entity
           rb.isKinematic = false;
           rb.useGravity = true;
           rb.constraints = RigidbodyConstraints.None;
-          rb.AddForce(pushVector * 20f * rb.mass * dmgMod, ForceMode.Impulse);
+          rb.AddForce(pushVector * 15f * rb.mass * dmgMod, ForceMode.Impulse);
           rb.AddTorque(pushVector * 15f * rb.mass * dmgMod, ForceMode.Impulse);
         }
         else
@@ -55,6 +56,6 @@ public class Enemy : Entity
 
     public void TimeToDie()
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

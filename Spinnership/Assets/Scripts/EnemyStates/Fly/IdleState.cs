@@ -9,8 +9,6 @@ public IdleState(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMach
 {
 }
 
-
-Vector3 targetPos;
 Vector3 offset;
 
 float distanceToStop = 0.5f;
@@ -21,9 +19,8 @@ float maxTimer = 4f;
 
 public override void Enter()
 {
+    enemy.anim.SetTrigger("setIdle");
 
-    targetPos = Vector3.zero;
-    //enemy.idlePos = enemy.transform.position;
     Debug.Log("in idleState!");
 
     timer = Random.Range(1, maxTimer);
@@ -33,14 +30,12 @@ public override void Enter()
 
 public override void Exit()
 {
+    enemy.anim.ResetTrigger("setIdle");
     Debug.Log("out idleState!");
 }
 
 public override void LogicUpdate()
 {
-
-    //if (DoYouLikeWhatYouSee())
-  //     Debug.Log("Враг близко. Переход в атаку"); //stateMachine.ChangeState(entity.attack);
 
     timer-= 1*Time.deltaTime; 
     if (timer<=0) //При истечении таймера ожидания переходит в патрулирование

@@ -11,10 +11,12 @@ float acceptableDist = 1f;
 public override void Enter()
 {
     Debug.Log("in ChaseState");
+    enemy.anim.SetTrigger("setFlying");
 }
 
 public override void Exit()
 {  
+    enemy.anim.ResetTrigger("setFlying");
     Debug.Log("out ChaseState");
 }
 

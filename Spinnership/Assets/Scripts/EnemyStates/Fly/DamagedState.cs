@@ -19,18 +19,19 @@ public class DamagedState : State
     
         if (hpleft <=0) //Dead
         {
+            enemy.anim.SetTrigger("setDie");
             Debug.Log("Die");
-
         }
         else
         {
-            
+            enemy.anim.SetTrigger("setDamaged");
         }
 
     }
 
     public override void Exit()
     {
+        enemy.anim.ResetTrigger("setDamaged");
         Debug.Log("out damagedState!");
         enemy.rb.isKinematic = true;
 

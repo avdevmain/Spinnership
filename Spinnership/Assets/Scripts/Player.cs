@@ -18,7 +18,7 @@ public class Player : Entity
     public override void GetDamage(int dmgValue,float dmgMod, Vector3 point)
     {
         base.GetDamage(dmgValue, dmgMod, point);
-      //  rb.AddForce((this.transform.position - point) * 25f * rb.mass, ForceMode.Impulse);
-       // rb.AddTorque((this.transform.position - point) * 3f * rb.mass);
+        rb.AddForce((this.transform.position - point) * 3f * dmgValue * rb.mass, ForceMode.Impulse);
+        //rb.AddTorque((this.transform.position - point) * 3f * rb.mass);
     }
 }

@@ -8,6 +8,8 @@ public class Fly : Enemy
     {
         rb = GetComponent<Rigidbody>();
 
+        anim = GetComponent<Animator>();
+
         stateMachine = new StateMachine();
 
         idle = new IdleState(this, stateMachine);

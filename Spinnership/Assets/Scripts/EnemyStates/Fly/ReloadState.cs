@@ -10,11 +10,13 @@ public class ReloadState : State
 
     public override void Enter()
     {
+        enemy.anim.SetTrigger("setReload");
         Debug.Log("in reloadState!");
     }
 
     public override void Exit()
     {
+        enemy.anim.ResetTrigger("setReload");
         Debug.Log("out reloadState!");
     }
 

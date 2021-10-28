@@ -15,12 +15,14 @@ private float _animationTimePosition;
 
 public override void Enter()
 {
+    enemy.anim.SetTrigger("setFlying");
     Debug.Log("in patrolState!");
     GetPatrolPoint();
 }
 
 public override void Exit()
 {
+    enemy.anim.ResetTrigger("setFlying");
     Debug.Log("out patrolState!");
 }
 

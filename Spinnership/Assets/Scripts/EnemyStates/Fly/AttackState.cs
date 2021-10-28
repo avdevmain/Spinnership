@@ -10,13 +10,13 @@ public AttackState(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMa
 
 public override void Enter()
 {
+    enemy.anim.SetTrigger("setAttack");
     Debug.Log("in attackState!");
-
-    
 }
 
 public override void Exit()
 {
+    enemy.anim.ResetTrigger("setAttack");
     Debug.Log("out attackState!");
 }
 
