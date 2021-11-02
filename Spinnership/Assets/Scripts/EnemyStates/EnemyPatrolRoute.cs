@@ -11,34 +11,40 @@ public class EnemyPatrolRoute : MonoBehaviour
     public bool sequence;
 
     private void Start() {
-        
+        if (nodes.Length==0)
+            nodes = new Transform[0];
     }
 
     public Vector3 getNextPoint()
     {
-        if (sequence)
+        if (nodes.Length>0)
         {
-            int index = currPoint;
-            currPoint++;
-            if (currPoint==nodes.Length)
-                currPoint = 0;
-            return nodes[index].position;
+            if (sequence)
+            {
+                //int index = currPoint;
+                currPoint++;
+                if (currPoint==nodes.Length)
+                    currPoint = 0;
+                return nodes[currPoint].position;
+            }
+            else
+            {
+                int newPoint = 0;
+                if (nodes.Length>1)
+                    while (newPoint==currPoint)
+                        newPoint = Random.Range(0, nodes.Length);
+                currPoint = newPoint;
+                return nodes[currPoint].position;
+            }
         }
         else
-        {
-            int newPoint = 0;
-            if (nodes.Length>1)
-                while (newPoint==currPoint)
-                    newPoint = Random.Range(0, nodes.Length);
-            currPoint = newPoint;
-            return nodes[currPoint].position;
-        }
-            
+            return Vector3.zero;
     }
 
     private void OnDrawGizmos() {
 
         if (nodes.Length==0) return;
+        if (nodes[0] == null) return;
 
         for (int i =0; i<nodes.Length; i++)
         {

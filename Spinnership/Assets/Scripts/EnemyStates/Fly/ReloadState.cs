@@ -26,8 +26,9 @@ public class ReloadState : State
     public override void PhysicsUpdate()
     {}
 
-    public override void GetStopEvent()
+    public override void GetStopEvent(string letter)
     {
-        stateMachine.ChangeState(enemy.chase);
+        if (letter == "r")
+            stateMachine.ChangeState(enemy.chase);
     }
 }

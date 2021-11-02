@@ -23,6 +23,8 @@ public class Fly : Enemy
         damaged = new DamagedState(this, stateMachine);
 
         reload = new ReloadState(this, stateMachine);
+        
+        die = new DieState(this, stateMachine);
 
         stateMachine.Initialize(idle);
     }
@@ -31,9 +33,12 @@ public class Fly : Enemy
     private void Update() {
         stateMachine.CurrentState.LogicUpdate();
 
-        if ((DoYouLikeWhatYouSee())&&((stateMachine.CurrentState == idle)||(stateMachine.CurrentState == patrol)))
+        if ((stateMachine.CurrentState == idle)||(stateMachine.CurrentState == patrol))
         {
-            stateMachine.ChangeState(chase);
+            if (DoYouLikeWhatYouSee())
+            {
+                stateMachine.ChangeState(chase);
+            }
         }
     }
     private bool DoYouLikeWhatYouSee() //Is player close enough

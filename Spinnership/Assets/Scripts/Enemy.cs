@@ -15,11 +15,17 @@ public class Enemy : Entity
     public AttackState attack;
     public ReloadState reload;
     public DamagedState damaged;
+    public DieState die;
     
+
+
+    public bool attacksOnDistance; //Shoots instead of melee
 
     public override void GetDamage(int dmgValue,float dmgMod, Vector3 point)
     {
         if (stateMachine.CurrentState == damaged) return;
+        if (stateMachine.CurrentState == die) return;
+        if (dmgMod == 0) return;
 
         base.GetDamage(dmgValue, dmgMod, point);
         
@@ -29,8 +35,6 @@ public class Enemy : Entity
         if (pushVector == Vector3.zero)
             pushVector = (gameObject.transform.position - stateMachine.player.transform.position).normalized;
         
-
-        Debug.Log(pushVector);
         if (GetHealth() <= 0) //Dead
         {
           rb.isKinematic = false;
@@ -38,20 +42,22 @@ public class Enemy : Entity
           rb.constraints = RigidbodyConstraints.None;
           rb.AddForce(pushVector * 15f * rb.mass * dmgMod, ForceMode.Impulse);
           rb.AddTorque(pushVector * 15f * rb.mass * dmgMod, ForceMode.Impulse);
+          stateMachine.ChangeState(die);
         }
         else
         {
             rb.isKinematic = false;
             rb.AddForce(pushVector * 10f * rb.mass * dmgMod, ForceMode.Impulse);
             rb.AddTorque(pushVector * 10f * rb.mass * dmgMod, ForceMode.Impulse);
+            stateMachine.ChangeState(damaged);
         }
 
-        stateMachine.ChangeState(damaged);
+        
 
     }
-    public void ReceiveStopEvent() 
+    public void ReceiveStopEvent(string letter) 
     {
-        stateMachine.CurrentState.GetStopEvent();
+        stateMachine.CurrentState.GetStopEvent(letter);
     }
 
     public void TimeToDie()

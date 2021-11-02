@@ -10,13 +10,25 @@ public AttackState(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMa
 
 public override void Enter()
 {
-    enemy.anim.SetTrigger("setAttack");
+    if (!enemy.attacksOnDistance)
+    {//Melee attack
+        if (Random.Range(0,2) <1)
+            enemy.anim.SetTrigger("setMAttack");
+        else
+            enemy.anim.SetTrigger("setMAttack2");    
+    }
+    else
+    {//Shoot with something
+        enemy.anim.SetTrigger("setDAttack");
+    }
     Debug.Log("in attackState!");
 }
 
 public override void Exit()
 {
-    enemy.anim.ResetTrigger("setAttack");
+    enemy.anim.ResetTrigger("setMAttack");
+    enemy.anim.ResetTrigger("setMAttack2");
+    enemy.anim.ResetTrigger("setDAttack");
     Debug.Log("out attackState!");
 }
 
@@ -26,7 +38,7 @@ public override void LogicUpdate()
 public override void PhysicsUpdate()
 {}
 
-public override void GetStopEvent()
+public override void GetStopEvent(string letter)
 {
     stateMachine.player.GetDamage(enemy.attackPower,1, enemy.transform.position);
     stateMachine.ChangeState(enemy.reload);

@@ -8,25 +8,11 @@ public class DamagedState : State
     {
     }
 
-    int hpleft;
 
     public override void Enter()
     {
         Debug.Log("in damagedState!");
-
-        hpleft = enemy.GetHealth();
-        
-    
-        if (hpleft <=0) //Dead
-        {
-            enemy.anim.SetTrigger("setDie");
-            Debug.Log("Die");
-        }
-        else
-        {
-            enemy.anim.SetTrigger("setDamaged");
-        }
-
+        enemy.anim.SetTrigger("setDamaged");
     }
 
     public override void Exit()
@@ -44,11 +30,9 @@ public class DamagedState : State
     public override void PhysicsUpdate()
     {}
 
-    public override void GetStopEvent()
+    public override void GetStopEvent(string letter)
     {
-        if (hpleft>0)
-            stateMachine.ChangeState(enemy.chase);
-        else
-            enemy.TimeToDie();
+        if (letter == "dmg")
+            stateMachine.ChangeState(enemy.chase);  
     }
 }

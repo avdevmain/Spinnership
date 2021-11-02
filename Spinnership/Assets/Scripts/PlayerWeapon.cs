@@ -16,10 +16,11 @@ public class PlayerWeapon : MonoBehaviour
  private void OnCollisionEnter(Collision other) {
      if (other.gameObject.layer == layer)
      {
-        float power = rb.velocity.magnitude;
+         ;
+        float power = rb.velocity.magnitude; Debug.Log(power);
         float dmgMod = 1f;
-        if (power<1.5f) dmgMod = 0;
-        else if (power <6f) dmgMod = 1f;
+        if (power<8f) dmgMod = 0;
+        else if (power <14f) dmgMod = 1f;
         else dmgMod = Random.Range(1.2f, 1.55f);
         
         Vector3 touchPoint = Vector3.zero;

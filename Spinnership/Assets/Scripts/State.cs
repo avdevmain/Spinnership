@@ -35,7 +35,7 @@ public virtual void Exit()
 
 }
 
-public virtual void GetStopEvent()
+public virtual void GetStopEvent(string letter)
 {
 
 }

@@ -44,7 +44,7 @@ private void GetPatrolPoint()
 
     if (targetPos == Vector3.zero)
     {
-        Debug.Log("Error: setting target position for patrol");
+        stateMachine.ChangeState(enemy.idle);
         return;
     }
    // enemy.idlePos = targetPos;
