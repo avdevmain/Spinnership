@@ -13,6 +13,7 @@ public class DamagedState : State
     {
         Debug.Log("in damagedState!");
         enemy.anim.SetTrigger("setDamaged");
+        enemy.target = stateMachine.player;
     }
 
     public override void Exit()

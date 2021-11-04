@@ -39,7 +39,14 @@ public override void LogicUpdate()
 
     timer-= 1*Time.deltaTime; 
     if (timer<=0) //При истечении таймера ожидания переходит в патрулирование
-        stateMachine.ChangeState(enemy.patrol);
+        if (!enemy.tutorialMode)
+            stateMachine.ChangeState(enemy.patrol);
+
+    if (enemy.keyTarget)
+    { 
+        if (enemy.target != null)
+            stateMachine.ChangeState(enemy.chase);
+    }
 }
 
 public override void PhysicsUpdate()

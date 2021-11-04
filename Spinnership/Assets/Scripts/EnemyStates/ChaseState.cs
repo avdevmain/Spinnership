@@ -22,7 +22,7 @@ public override void Exit()
 
 public override void LogicUpdate()
 {
-    MoveToPlayer();
+    MoveToTarget();
 
     CheckDist();
 }
@@ -32,9 +32,10 @@ public override void PhysicsUpdate()
 
 }
 
-private void MoveToPlayer()
+private void MoveToTarget()
 {
-    Vector3 targetPos = stateMachine.player.transform.position;
+    //Vector3 targetPos = stateMachine.player.transform.position;
+    Vector3 targetPos = enemy.target.transform.position;
 
     enemy.transform.rotation = Quaternion.Slerp(enemy.transform.rotation, Quaternion.LookRotation(targetPos - enemy.transform.position), Time.deltaTime * 10f);
     enemy.transform.rotation = Quaternion.Euler(0, enemy.transform.rotation.eulerAngles.y, 0);
@@ -47,7 +48,7 @@ private void MoveToPlayer()
 
 private void CheckDist()
 {
-    float distance = Vector3.Distance(enemy.transform.position, stateMachine.player.transform.position);
+    float distance = Vector3.Distance(enemy.transform.position, enemy.target.transform.position);
     if (distance <= attackDistance)
     {   
         //Perform attack

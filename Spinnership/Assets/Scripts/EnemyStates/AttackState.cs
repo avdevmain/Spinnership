@@ -40,7 +40,7 @@ public override void PhysicsUpdate()
 
 public override void GetStopEvent(string letter)
 {
-    stateMachine.player.GetDamage(enemy.attackPower,1, enemy.transform.position);
+    enemy.target.GetDamage(enemy.attackPower,1, enemy.transform.position);
     stateMachine.ChangeState(enemy.reload);
 }
 
