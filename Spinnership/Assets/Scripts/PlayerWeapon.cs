@@ -16,8 +16,7 @@ public class PlayerWeapon : MonoBehaviour
  private void OnCollisionEnter(Collision other) {
      if (other.gameObject.layer == layer)
      {
-         ;
-        float power = rb.velocity.magnitude; Debug.Log(power);
+        float power = rb.velocity.magnitude; //Debug.Log(power);
         float dmgMod = 1f;
         if (power<8f) dmgMod = 0;
         else if (power <14f) dmgMod = 1f;

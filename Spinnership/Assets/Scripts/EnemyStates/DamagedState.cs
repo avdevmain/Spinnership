@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class DamagedState : State
 {
@@ -14,6 +15,7 @@ public class DamagedState : State
         Debug.Log("in damagedState!");
         enemy.anim.SetTrigger("setDamaged");
         enemy.target = stateMachine.player;
+        enemy.outline.OutlineParameters.DOColor(Color.red, 0.2f);
     }
 
     public override void Exit()
@@ -21,6 +23,7 @@ public class DamagedState : State
         enemy.anim.ResetTrigger("setDamaged");
         Debug.Log("out damagedState!");
         enemy.rb.isKinematic = true;
+        enemy.outline.OutlineParameters.DOColor(new Color32(144, 44,0,255), 0.2f);
 
     }
 

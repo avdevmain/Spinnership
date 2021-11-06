@@ -18,7 +18,6 @@ public class CameraFollow : MonoBehaviour
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         
-        Debug.Log(smoothedPosition.y);
         if ((smoothedPosition.x < -13.5f) || (smoothedPosition.x > 13.5f)) //Level border values
             smoothedPosition.x = transform.position.x;
 

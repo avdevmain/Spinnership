@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class DieState : State
 {
     public DieState(Enemy enemy, StateMachine stateMachine) : base(enemy, stateMachine)
@@ -11,6 +11,7 @@ public class DieState : State
    
    public override void Enter()
     {
+        enemy.outline.OutlineParameters.DOColor(new Color(0,0,0,0), 0.3f);
         Debug.Log("in dieState!");
         enemy.anim.SetTrigger("setDie");
     }

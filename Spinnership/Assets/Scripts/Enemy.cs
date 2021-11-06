@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
+using EPOOutline;
 public class Enemy : Entity
 {
     public Animator anim;
     public int attackPower;
     public StateMachine stateMachine;
+
+    public Outlinable outline;
 
     public AnimationCurve MoveCurve;  
     public IdleState idle;
@@ -30,6 +33,8 @@ public class Enemy : Entity
 
         anim = GetComponent<Animator>();
 
+        outline = GetComponent<Outlinable>();
+
         stateMachine = new StateMachine();
 
         idle = new IdleState(this, stateMachine);
@@ -50,6 +55,7 @@ public class Enemy : Entity
 
         if (keyTarget)
             target = FindObjectOfType<EnemyObjective>();
+        
     }
 
 
@@ -70,8 +76,11 @@ public class Enemy : Entity
     }
     private bool DoYouLikeWhatYouSee() //Is player close enough
     {
+        
+
         if (Vector3.Distance(transform.position, stateMachine.player.transform.position) < detectRadius)
         {
+            target = stateMachine.player;
             return true;
         }
         return false;
