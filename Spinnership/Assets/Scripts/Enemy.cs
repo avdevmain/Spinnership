@@ -97,7 +97,7 @@ public class Enemy : Entity
         if (dmgMod == 0) return;
 
         base.GetDamage(dmgValue, dmgMod, point);
-        
+
         //Vector3 pushVector = Vector3.up;
         Vector3 pushVector = (gameObject.transform.position - point).normalized;
 

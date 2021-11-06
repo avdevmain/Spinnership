@@ -1480,6 +1480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69d29e2999c71e4e8d292c760ca71dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffect: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   armor: 0
   health: 100
   speed: 0
@@ -3597,7 +3598,7 @@ Transform:
   m_GameObject: {fileID: 1185084844}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.96, y: 5.12, z: 0}
-  m_LocalScale: {x: 1, y: 34.365, z: 29.890001}
+  m_LocalScale: {x: 1, y: 34.365, z: 3.8315992}
   m_Children: []
   m_Father: {fileID: 759758348}
   m_RootOrder: 2
@@ -3622,7 +3623,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1185084844}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5068,7 +5069,7 @@ MonoBehaviour:
   renderStyle: 1
   outlineParameters:
     enabled: 1
-    color: {r: 0.9339623, g: 0, b: 0.009436032, a: 1}
+    color: {r: 0.5660378, g: 0.17087932, b: 0, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:
@@ -5253,7 +5254,7 @@ Transform:
   m_GameObject: {fileID: 1602910968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 17.95, y: 5.12, z: 0}
-  m_LocalScale: {x: 1, y: 34.365, z: 29.890001}
+  m_LocalScale: {x: 1, y: 34.365, z: 3.8315992}
   m_Children: []
   m_Father: {fileID: 759758348}
   m_RootOrder: 0
@@ -5278,7 +5279,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602910968}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5866,7 +5867,7 @@ MonoBehaviour:
   renderStyle: 1
   outlineParameters:
     enabled: 1
-    color: {r: 0.9339623, g: 0, b: 0.009436032, a: 1}
+    color: {r: 0.5660378, g: 0.17087932, b: 0, a: 1}
     dilateShift: 1
     blurShift: 1
     fillPass:
@@ -6332,6 +6333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f3dddc9cb1d3f44843626217eb0606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffect: {fileID: 9127653965126434405, guid: 3c6022ac1a1cc7b438777188ae54da0e, type: 3}
   armor: 0
   health: 0
   speed: 0
@@ -6436,6 +6438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4baf9b5a26d489949a10dd9a5e4274cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffect: {fileID: 0}
   armor: 0
   health: 2
   speed: 5
@@ -7743,6 +7746,10 @@ PrefabInstance:
       propertyPath: nodes.Array.data[3]
       value: 
       objectReference: {fileID: 1968111799}
+    - target: {fileID: 1789583599791223443, guid: 1f7ebff8a4eaca34888964fd494949b0, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
     - target: {fileID: 1789583599791223454, guid: 1f7ebff8a4eaca34888964fd494949b0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9384,6 +9391,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3426774422613726376, guid: 70e2a49813dd05044a2d2700ad66a953, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
     - target: {fileID: 3426774422613726378, guid: 70e2a49813dd05044a2d2700ad66a953, type: 3}
       propertyPath: m_Name
       value: Bumble
@@ -9741,6 +9752,10 @@ PrefabInstance:
       propertyPath: nodes.Array.data[3]
       value: 
       objectReference: {fileID: 1968111799}
+    - target: {fileID: 6481354440460530424, guid: 410ca0b21e70df4428373fdfbf1ec950, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
     - target: {fileID: 6481354440460530424, guid: 410ca0b21e70df4428373fdfbf1ec950, type: 3}
       propertyPath: keyTarget
       value: 1

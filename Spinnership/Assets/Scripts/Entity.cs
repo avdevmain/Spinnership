@@ -5,6 +5,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
 
+    public GameObject hitEffect;
     [SerializeField] private int armor;
     [SerializeField] private int health;
 
@@ -25,6 +26,8 @@ public class Entity : MonoBehaviour
         if (dmgValue == 0) return;
 
         health -= (dmgValue - armor);
+
+        Instantiate(hitEffect, this.transform.position, new Quaternion(0,0,0,0));
 
     }
 
