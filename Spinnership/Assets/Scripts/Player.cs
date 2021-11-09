@@ -54,7 +54,7 @@ public class Player : Entity
     {
         mat[1].color = Color.yellow;
         yield return new WaitForSecondsRealtime(1f);
-        mat[1].color = Color.green;
+        mat[1].color = new Color32(75,190,255,255);
     }
 
 }
