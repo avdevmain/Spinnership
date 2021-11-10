@@ -21,7 +21,6 @@ public override void Enter()
     {//Shoot with something
         enemy.anim.SetTrigger("setDAttack");
     }
-    Debug.Log("in attackState!");
 }
 
 public override void Exit()
@@ -29,7 +28,6 @@ public override void Exit()
     enemy.anim.ResetTrigger("setMAttack");
     enemy.anim.ResetTrigger("setMAttack2");
     enemy.anim.ResetTrigger("setDAttack");
-    Debug.Log("out attackState!");
 }
 
 public override void LogicUpdate()

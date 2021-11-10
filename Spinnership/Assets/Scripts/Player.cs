@@ -53,8 +53,10 @@ public class Player : Entity
     private IEnumerator Timer()
     {
         mat[1].color = Color.yellow;
+        mat[1].DisableKeyword("_EMISSION");
         yield return new WaitForSecondsRealtime(1f);
         mat[1].color = new Color32(75,190,255,255);
+        mat[1].EnableKeyword("_EMISSION");
     }
 
 }

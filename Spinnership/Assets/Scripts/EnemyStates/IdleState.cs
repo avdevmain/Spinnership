@@ -21,8 +21,6 @@ public override void Enter()
 {
     enemy.anim.SetTrigger("setIdle");
 
-    Debug.Log("in idleState!");
-
     timer = Random.Range(1, maxTimer);
 
     offset = new Vector3(0,5,0);
@@ -31,7 +29,6 @@ public override void Enter()
 public override void Exit()
 {
     enemy.anim.ResetTrigger("setIdle");
-    Debug.Log("out idleState!");
 }
 
 public override void LogicUpdate()

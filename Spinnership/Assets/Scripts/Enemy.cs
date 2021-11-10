@@ -26,6 +26,7 @@ public class Enemy : Entity
     public Entity target;
     public bool attacksOnDistance; //Shoots instead of melee
 
+    public LvlEnemyManager enemyManager;
 
     private void Start()
     {

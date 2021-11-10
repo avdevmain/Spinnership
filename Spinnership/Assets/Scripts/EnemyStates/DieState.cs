@@ -12,7 +12,7 @@ public class DieState : State
    public override void Enter()
     {
         enemy.outline.OutlineParameters.DOColor(new Color(0,0,0,0), 0.3f);
-        Debug.Log("in dieState!");
+        enemy.enemyManager.currEnemiesOnScreen-=1;
         enemy.anim.SetTrigger("setDie");
     }
 

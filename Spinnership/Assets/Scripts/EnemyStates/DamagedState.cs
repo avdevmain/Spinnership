@@ -12,7 +12,6 @@ public class DamagedState : State
 
     public override void Enter()
     {
-        Debug.Log("in damagedState!");
         enemy.anim.SetTrigger("setDamaged");
         enemy.target = stateMachine.player;
         enemy.outline.OutlineParameters.DOColor(Color.red, 0.1f);
@@ -22,7 +21,6 @@ public class DamagedState : State
     public override void Exit()
     {
         enemy.anim.ResetTrigger("setDamaged");
-        Debug.Log("out damagedState!");
         enemy.rb.isKinematic = true;
         enemy.outline.OutlineParameters.DOColor(new Color32(255, 80,0,255), 0.2f);
         enemy.outline.OutlineParameters.FillPass.DOColor("_PublicColor",new Color32(255,0,0,0), 0.2f);
