@@ -11,7 +11,10 @@ public class DieState : State
    
    public override void Enter()
     {
-        enemy.outline.OutlineParameters.DOColor(new Color(0,0,0,0), 0.3f);
+        //enemy.outline.OutlineParameters.DOColor(new Color(0,0,0,0), 0.3f);
+        enemy.outline.FrontParameters.DOColor(new Color(0,0,0,0), 0.3f);
+        enemy.outline.FrontParameters.FillPass.DOColor("_PublicColor",new Color32(255,0,0,100), 0.2f);
+        enemy.outline.BackParameters.Enabled = false;
         enemy.enemyManager.currEnemiesOnScreen-=1;
         enemy.anim.SetTrigger("setDie");
     }

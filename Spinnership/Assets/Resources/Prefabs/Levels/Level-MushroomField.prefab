@@ -74,7 +74,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui_Manager: {fileID: 0}
   timeBetweenSpawns: 0.5
-  timeBetweenWaves: 2
   spawnZones: []
   waves:
   - enemyToSpawn:

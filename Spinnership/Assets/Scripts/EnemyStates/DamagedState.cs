@@ -14,16 +14,18 @@ public class DamagedState : State
     {
         enemy.anim.SetTrigger("setDamaged");
         enemy.target = stateMachine.player;
-        enemy.outline.OutlineParameters.DOColor(Color.red, 0.1f);
-        enemy.outline.OutlineParameters.FillPass.DOColor("_PublicColor",new Color32(255,0,0,70), 0.2f);
+        enemy.outline.FrontParameters.DOColor(Color.red, 0.1f);
+        //enemy.outline.OutlineParameters.DOColor(Color.red, 0.1f);
+        enemy.outline.FrontParameters.FillPass.DOColor("_PublicColor",new Color32(255,80,0,40), 0.2f);
     }
 
     public override void Exit()
     {
         enemy.anim.ResetTrigger("setDamaged");
         enemy.rb.isKinematic = true;
-        enemy.outline.OutlineParameters.DOColor(new Color32(255, 80,0,255), 0.2f);
-        enemy.outline.OutlineParameters.FillPass.DOColor("_PublicColor",new Color32(255,0,0,0), 0.2f);
+        //enemy.outline.OutlineParameters.DOColor(new Color32(255, 80,0,255), 0.2f);
+        enemy.outline.FrontParameters.DOColor(new Color32(255, 0,0,0), 0.2f);
+        enemy.outline.FrontParameters.FillPass.DOColor("_PublicColor",new Color32(255,0,0,0), 0.2f);
 
     }
 

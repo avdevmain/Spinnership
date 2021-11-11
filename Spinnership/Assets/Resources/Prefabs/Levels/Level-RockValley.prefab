@@ -566,9 +566,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui_Manager: {fileID: 0}
   timeBetweenSpawns: 0.5
-  timeBetweenWaves: 2
   spawnZones: []
-  waves: []
+  waves:
+  - enemyToSpawn:
+    - enemyPrefab: {fileID: 6481354440460530420, guid: 410ca0b21e70df4428373fdfbf1ec950, type: 3}
+      amount: 6
+  - enemyToSpawn:
+    - enemyPrefab: {fileID: 6481354440460530420, guid: 410ca0b21e70df4428373fdfbf1ec950, type: 3}
+      amount: 3
+    - enemyPrefab: {fileID: 1789583599791223441, guid: 1f7ebff8a4eaca34888964fd494949b0, type: 3}
+      amount: 3
+  - enemyToSpawn:
+    - enemyPrefab: {fileID: 6481354440460530420, guid: 410ca0b21e70df4428373fdfbf1ec950, type: 3}
+      amount: 3
+    - enemyPrefab: {fileID: 1789583599791223441, guid: 1f7ebff8a4eaca34888964fd494949b0, type: 3}
+      amount: 4
+    - enemyPrefab: {fileID: 3426774422613726378, guid: 70e2a49813dd05044a2d2700ad66a953, type: 3}
+      amount: 1
+  - enemyToSpawn:
+    - enemyPrefab: {fileID: 6481354440460530420, guid: 410ca0b21e70df4428373fdfbf1ec950, type: 3}
+      amount: 4
+    - enemyPrefab: {fileID: 1789583599791223441, guid: 1f7ebff8a4eaca34888964fd494949b0, type: 3}
+      amount: 5
+    - enemyPrefab: {fileID: 3426774422613726378, guid: 70e2a49813dd05044a2d2700ad66a953, type: 3}
+      amount: 3
   tutorialMode: 0
   keyTarget: 0
   maxEnemiesOnScreen: 3

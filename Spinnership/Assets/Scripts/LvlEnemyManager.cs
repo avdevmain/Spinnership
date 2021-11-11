@@ -8,8 +8,10 @@ public class LvlEnemyManager : MonoBehaviour
 
 public UI_Manager ui_Manager;
 
+public LevelManager levelManager;
+
 public float timeBetweenSpawns = 0.5f;
-public float timeBetweenWaves = 2f;
+public const float timeBetweenWaves = 2f;
 private Coroutine waveTimer;
 private Coroutine spawnTimer;
 
@@ -24,11 +26,15 @@ public bool keyTarget;
 public int maxEnemiesOnScreen = 3;
 public int currEnemiesOnScreen = 0;
 private int currWave = 0;
+private bool finished = false;
 
 private void Start() {
     spawnZones = GetComponentsInChildren<BoxCollider>();
     ui_Manager = FindObjectOfType<UI_Manager>();
-    Debug.Log("Wave 1/" + waves.Length + "!");
+    levelManager = FindObjectOfType<LevelManager>();
+    ui_Manager.UpdateWaveText(currWave+1, waves.Length); 
+
+    waveTimer = StartCoroutine(WaveTimer(timeBetweenWaves * 2));
 
 }
 
@@ -37,6 +43,8 @@ private void Start() {
 
 
 private void Update() {
+
+    if (finished) return;
     
     if ((currEnemiesOnScreen<maxEnemiesOnScreen) && (spawnTimer == null) && (waveTimer == null))
     {
@@ -70,7 +78,7 @@ public void Spawn()
 
         waveTimer = StartCoroutine(WaveTimer());
         currWave += 1;
-        Debug.Log("Wave " + (currWave+1) + "/" + waves.Length + "!");
+        ui_Manager.UpdateWaveText(currWave+1, waves.Length); 
         
     }
 
@@ -94,7 +102,8 @@ public void Spawn()
 
     public void ProcessFinish()
     {
-        Debug.Log("Pobeda");
+        finished = true;
+        levelManager.ProcessFinish();
     }
 
     private bool IsWaveSpawnedOut()
@@ -119,7 +128,7 @@ public void Spawn()
         spawnTimer = null;
     }
 
-    private IEnumerator WaveTimer()
+    private IEnumerator WaveTimer(float time = timeBetweenWaves)
     {
         yield return new WaitForSecondsRealtime(timeBetweenWaves);
         waveTimer = null;

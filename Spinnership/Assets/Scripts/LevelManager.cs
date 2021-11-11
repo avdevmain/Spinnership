@@ -19,9 +19,14 @@ public GameObject[] levelPrefabs;
 
 public LvlEnemyManager enemyManager;
 
+public int currentResult = 100;
+
+
+
 private void Start() {
 
-    
+    currentResult = 100;
+
     levelPrefabs = Resources.LoadAll<GameObject>("Prefabs/Levels/");
 
 
@@ -40,13 +45,37 @@ private void Start() {
         sun.intensity = 1;
     }
 
-    GameObject keyObj = FindObjectOfType<EnemyObjective>().gameObject;
-    if (keyObj!=null)
+    if (FindObjectOfType<EnemyObjective>())
     {
         rnd = Random.Range(0,3);
-        if (rnd == 0) enemyManager.keyTarget = true;
+        if (rnd == 0) 
+        {
+            enemyManager.keyTarget = true;
+            ui_manager.SetObjectiveTitle("Protect food");
+        }
+        else
+        {
+            ui_manager.SetObjectiveTitle("Clear the area");
+        }
+    }
+    else
+    {
+        ui_manager.SetObjectiveTitle("Clear the area");
+    }
+    enemyManager.enabled = true;
+}
+
+    public void MinusPercentage(int value)
+    {
+        
+        currentResult -= value;
+        if (currentResult<=0) currentResult = 0;
+        ui_manager.UpdatePercentageText(currentResult, value);
     }
 
-}
+    public void ProcessFinish()
+    {
+        ui_manager.ProcessFinish(currentResult);
+    }
 
 }

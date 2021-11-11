@@ -16,7 +16,7 @@ public class Player : Entity
     //red - FF1800
 
     private Coroutine timer;
-
+    private LevelManager levelManager;
     private void Awake() {
         if (!rb)
             rb = GetComponent<Rigidbody>();
@@ -25,6 +25,8 @@ public class Player : Entity
             weapon = transform.GetChild(2).GetComponent<PlayerWeapon>();
 
             mat = mrend.materials;
+
+            levelManager = FindObjectOfType<LevelManager>();
     }
 
 
@@ -34,6 +36,8 @@ public class Player : Entity
         rb.AddForce((this.transform.position - point) * 3f * dmgValue * rb.mass, ForceMode.Impulse);
         //rb.AddTorque((this.transform.position - point) * 3f * rb.mass);
         ChangeIndicator();
+        levelManager.MinusPercentage(dmgValue);
+        
     }
 
     private void ChangeIndicator()
