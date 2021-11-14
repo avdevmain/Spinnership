@@ -10,8 +10,8 @@ public UI_Manager ui_Manager;
 
 public LevelManager levelManager;
 
-public float timeBetweenSpawns = 0.5f;
-public const float timeBetweenWaves = 2f;
+public float timeBetweenSpawns = 1f;
+public const float timeBetweenWaves = 3.5f;
 private Coroutine waveTimer;
 private Coroutine spawnTimer;
 
@@ -23,11 +23,14 @@ public SpawnWaves[] waves;
 public bool tutorialMode;
 public bool keyTarget;
 
-public int maxEnemiesOnScreen = 3;
+public int maxEnemiesOnScreen = 2;
 public int currEnemiesOnScreen = 0;
 private int currWave = 0;
 private bool finished = false;
 
+public Light sun;
+public Material daySky;
+public Material nightSky;
 private void Start() {
     spawnZones = GetComponentsInChildren<BoxCollider>();
     ui_Manager = FindObjectOfType<UI_Manager>();
@@ -36,6 +39,18 @@ private void Start() {
 
     waveTimer = StartCoroutine(WaveTimer(timeBetweenWaves * 2));
 
+
+        int rnd = Random.Range(0,3);
+
+        if (rnd == 0) 
+        {
+            RenderSettings.skybox = nightSky;
+            sun.intensity = 0.2f;
+        } else 
+        {
+            RenderSettings.skybox = daySky;
+            sun.intensity = 1;
+        }
 }
 
 

@@ -1223,7 +1223,7 @@ MonoBehaviour:
   hitEffect: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
   armor: 0
   health: 6
-  speed: 8
+  speed: 3
   upForce: 60
   rb: {fileID: 0}
   idlePos: {x: 0, y: 0, z: 0}

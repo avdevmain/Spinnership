@@ -27,6 +27,7 @@ public class Player : Entity
             mat = mrend.materials;
 
             levelManager = FindObjectOfType<LevelManager>();
+
     }
 
 

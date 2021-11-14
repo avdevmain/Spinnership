@@ -29,10 +29,6 @@ public class UI_Manager : MonoBehaviour
     {
         currentResult.SetActive(true);
         task_text.text = value;
-        //fadeObj = task_text.DOFade(1, 0.5f);
-        //result_text.DOFade(1, 1f);
-        //fadeObj.onComplete += ()=> { task_text.DOFade(0,3f);};
-
         StartCoroutine(FadeObj());
     }
 
