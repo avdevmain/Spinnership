@@ -25,14 +25,14 @@ private string loadedLevel;
 
 
     private void Start() {
-  
+    Application.targetFrameRate = 60;
     sceneNames = new List<string>();
     sceneNames.Add("1_Meadow");
-    sceneNames.Add("2_DeepForest");
-    sceneNames.Add("3_Camp");
-    sceneNames.Add("4_ForestryZone");
-    sceneNames.Add("5_RockValley");
-    sceneNames.Add("6_MushroomField");
+    //sceneNames.Add("2_DeepForest");
+    //sceneNames.Add("3_Camp");
+    //sceneNames.Add("4_ForestryZone");
+    //sceneNames.Add("5_RockValley");
+    //sceneNames.Add("6_MushroomField");
 
 
      SetupLevel();
@@ -42,6 +42,7 @@ private string loadedLevel;
     private void SetupLevel()
     {
 
+        ui_manager.AnnounceLevel();
         currentResult = 100;
         ui_manager.result_text.text = currentResult + "%";
 
@@ -96,6 +97,7 @@ private string loadedLevel;
 
     public void Restart()
     {
+        ui_manager.ResetLevel();
         SetupLevel();
     }
 }

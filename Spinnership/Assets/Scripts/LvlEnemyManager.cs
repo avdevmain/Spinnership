@@ -39,7 +39,7 @@ private void Start() {
 
     waveTimer = StartCoroutine(WaveTimer(timeBetweenWaves * 2));
 
-
+        /*
         int rnd = Random.Range(0,3);
 
         if (rnd == 0) 
@@ -51,6 +51,8 @@ private void Start() {
             RenderSettings.skybox = daySky;
             sun.intensity = 1;
         }
+
+        */
 }
 
 

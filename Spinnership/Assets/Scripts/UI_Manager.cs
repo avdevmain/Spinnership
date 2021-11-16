@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 
@@ -10,6 +11,9 @@ public class UI_Manager : MonoBehaviour
 
     public GameObject currentResult;
     public TMP_Text result_text;
+    
+    public Image result_star;
+
     public TMP_Text wave_text;
     public GameObject pauseMenu;
     public GameObject finishMenu;
@@ -18,13 +22,30 @@ public class UI_Manager : MonoBehaviour
     public TMP_Text coin_reward;
     Sequence fadeObjSequence;
     private void Start() {
+
+       // AnnounceLevel();
+    }
+    private Tween fadeObj;
+
+    public void ResetLevel()
+    {
+        if (fadeObjSequence.active)
+            fadeObjSequence.Kill();
+        task_text.alpha = 0;
+        result_text.alpha = 0;
+        result_star.color = new Color32(255,255,255,0);
+    }
+
+    public void AnnounceLevel()
+    {
         fadeObjSequence = DOTween.Sequence();
         fadeObjSequence.Append(task_text.DOFade(1, 1f));
         fadeObjSequence.AppendInterval(1f);
-        fadeObjSequence.Append(result_text.DOFade(1, 1f));
+        fadeObjSequence.Append(result_text.DOFade(0.75f, 1f));
+        fadeObjSequence.Append(result_star.DOFade(0.6f, 1f));
         fadeObjSequence.Append(task_text.DOFade(0,1f));
     }
-    private Tween fadeObj;
+
     public void SetObjectiveTitle(string value)
     {
         currentResult.SetActive(true);
