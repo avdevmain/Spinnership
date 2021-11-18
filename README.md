@@ -1,4 +1,4 @@
-# Spinnership (11/21)
+# Spinnership (11.2021)
 Mobile hypercasual where you attack enemies using inertia of your flying ship
 
 Prototype CTR ~0.3%
