@@ -1,7 +1,7 @@
-# Spinnership (11.2021)
+# Spinning robot (11.2021)
 Mobile hypercasual where you attack enemies using inertia of your flying ship
 
-Prototype CTR ~0.3%
+Prototype CTR ~0.24%
 
 There is also a [gameplay video demonstration](https://youtu.be/Y9BAkgtIW-g).
 
